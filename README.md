@@ -9,11 +9,19 @@ Resources for testing are available here:
 
 ### Windows
 
-I used WAMP server 3.1.9 x64 configured with PHP version 5.6.40 (for ioncube compatibility).
+For WebPanel1.7z (unauthenticated RCE), I used WAMP server 3.1.9 x64 configured with PHP version 5.6.40 (for ioncube compatibility).
+
+For WebPanel2.7z (authenticated RCE), I used WAMP server 3.1.9 x64 configured with PHP version 7.2.18 (for ioncube compatibility).
+
+For WebPanel3.7z (authenticated RCE), I used WAMP server 3.1.9 x64 configured with PHP version 7.2.18 (source code is not obfuscated, don't need ioncube).
 
 ### Linux
 
-I used a Debian 9 on which I installed PHP version 5.6.40 (for ioncube compatibility).
+For WebPanel1.7z (unauthenticated RCE), I used a Debian 9 on which I installed PHP version 5.6.40 (for ioncube compatibility).
+
+For WebPanel2.7z (authenticated RCE), I used a Debian 9 on which I installed the default PHP version (for ioncube compatibility).
+
+For WebPanel3.7z (unauthenticated RCE), I used a Debian 9 on which I installed the default PHP version (source code is not obfuscated, don't need ioncube).
 
 ## Verification Steps
 
