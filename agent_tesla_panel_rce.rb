@@ -17,25 +17,24 @@ class MetasploitModule < Msf::Exploit::Remote
         in the control center of the agent Tesla.
 
         The Unauthenticated RCE is possible by mixing two vulnerabilities (SQLi + PHP Object Injection).
-        By observing other sources of this panel find on the Internet to watch the patch, I concluded
-        that the vulnerability is transfomed to an Authenticated RCE.
+        By observing other sources of this panel I found on the Internet to watch the patch, I concluded
+        that the vulnerability was transfomed to an Authenticated RCE.
       },
       'Author' => [
         'Ege Balcı <ege.balci@invictuseurope.com>', # discovery and independent module
-        'mekhalleh (RAMELLA Sébastien)' # add. targetting windows and authenticated RCE
+        'mekhalleh (RAMELLA Sébastien)' #  added windows targeting and authenticated RCE
       ],
       'References' => [
         ['EDB', '47256'], # original module published.
         ['URL', 'https://github.com/mekhalleh/agent_tesla_panel_rce/tree/master/resources'], # Agent-Tesla WebPanel's available for download
         ['URL', 'https://www.pirates.re/agent-tesla-remote-command-execution-(fighting-the-webpanel)'], # fr
-        ['URL', 'https://www.cyber.nj.gov/threat-profiles/trojan-variants/agent-tesla'],
         ['URL', 'https://krebsonsecurity.com/2018/10/who-is-agent-tesla/']
       ],
       'DisclosureDate' => '2018-07-10',
       'License' => MSF_LICENSE,
       'Platform' => ['php', 'unix', 'windows'],
       'Arch' => [ARCH_CMD, ARCH_PHP],
-      'Privileged' => true,
+      'Privileged' => false,
       'Targets' => [
         ['Automatic (Dropper)',
           'Platform' => 'php',
