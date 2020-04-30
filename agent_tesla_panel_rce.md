@@ -19,7 +19,7 @@ For [WebPanel2.7z](https://github.com/mekhalleh/agent_tesla_panel_rce/raw/master
 
 For [WebPanel3.7z](https://github.com/mekhalleh/agent_tesla_panel_rce/raw/master/resources/WebPanel3.7z) (authenticated RCE), I used WAMP server 3.1.9 x64 configured with PHP version 7.2.18 (source code is not obfuscated, don't need ioncube).
 
-#### Install WAMP Server
+#### Install WAMP Server 3.2.0
 
 For this, I use a Microsoft Windows 7 x64 as sandboxing system with analysis tools like [FlareVM](https://github.com/fireeye/flare-vm).
 
@@ -27,7 +27,15 @@ You must install simply the latest version of [WAMP Server](https://sourceforge.
 
 1. Install `Wamp` using default installer configuration.
 2. Start `Wamp` and right click on the icon of started application and ***check*** `Wamp Settings > Allow VirtualHost local IP's others than 127.*`.
-3. Use the preinstalled `phpmyadmin` of `Wamp` for create a blank database for Agant Tesla web panel.
+3. Allow access to wamp server in local area network.
+
+For the this WAMP Server version:
+
+Edit the `httpd-vhost.conf` file into `c:/wamp64/bin/apache/apache2.4.41/conf/extra/` directory.
+
+Replace the line containig  `Require local` by `Require all granted`.
+
+4. Use the preinstalled `phpmyadmin` of `Wamp` for create a blank database for Agant Tesla web panel.
 
 ### Linux
 
