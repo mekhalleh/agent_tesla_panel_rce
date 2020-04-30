@@ -6,7 +6,6 @@
 class MetasploitModule < Msf::Exploit::Remote
   Rank = ExcellentRanking
 
-  include Msf::Exploit::FileDropper
   include Msf::Exploit::Remote::HttpClient
 
   def initialize(info = {})
